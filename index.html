@@ -122,7 +122,6 @@ border-radius:5px;
 <button onclick="event.stopPropagation(); chooseOrderMethod('Wildplay','₹499')">Order Now</button>
 </div>
 
-
 <div class="product" onclick="showProductDetail(
   'duchman.jpg', 
   'Duchman', 
@@ -137,7 +136,6 @@ border-radius:5px;
 <p>₹399</p>
 <button onclick="event.stopPropagation(); chooseOrderMethod('Duchman Beast','₹399')">Order Now</button>
 </div>
-
 
 <div class="product" onclick="showProductDetail(
   'seduct.jpg', 
@@ -158,7 +156,7 @@ border-radius:5px;
   'blackwild.jpg', 
   'Black Wild', 
   '₹649', 
-  'Manly and Powerfull Aura.', 
+  'Manly and Powerful Aura.', 
   'Both Genders',
   '100ml',
   'No flavour'
@@ -213,9 +211,9 @@ border-radius:5px;
 <p>© 2026 Snix – All Rights Reserved</p>
 </footer>
 
-<!-- EmailJS v4 SDK -->
-<script type="module">
-import emailjs from 'https://cdn.emailjs.com/dist/email.min.mjs';
+<!-- EmailJS v3 CDN -->
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
 emailjs.init("n8YBL-yF6RSutJjRU"); // Public Key
 
 let currentProduct="";
@@ -244,29 +242,29 @@ function openOrderFromDetail(){
 }
 
 function chooseOrderMethod(product,price){
-    currentProduct=product;
-    currentPrice=price;
+    currentProduct = product;
+    currentPrice = price;
     document.getElementById("orderMethodModal").style.display="block";
 
-    document.getElementById("whatsappBtn").onclick=function(){
-        let message=`New Order - Snix Store\nProduct: ${currentProduct}\nPrice: ${currentPrice}\nName:\nAddress:\nPhone:`;
-        let url="https://wa.me/919319942411?text="+encodeURIComponent(message);
-        window.open(url,"_blank");
+    document.getElementById("whatsappBtn").onclick = function(){
+        let message = `New Order - Snix Store\nProduct: ${currentProduct}\nPrice: ${currentPrice}\nName:\nAddress:\nPhone:`;
+        let url = "https://wa.me/919319942411?text=" + encodeURIComponent(message);
+        window.open(url, "_blank");
     }
 
-    document.getElementById("instagramBtn").onclick=function(){
-        let message=`Hello Snix Store,\nI want to order:\nProduct: ${currentProduct}\nPrice: ${currentPrice}`;
-        let instagramURL="https://instagram.com/riseup003";
-        window.open(instagramURL,"_blank");
+    document.getElementById("instagramBtn").onclick = function(){
+        let message = `Hello Snix Store,\nI want to order:\nProduct: ${currentProduct}\nPrice: ${currentPrice}`;
+        let instagramURL = "https://instagram.com/riseup003";
+        window.open(instagramURL, "_blank");
         alert("Please send this message on Instagram:\n\n"+message);
     }
 
-    document.getElementById("webOrderBtn").onclick=function(){
-        document.getElementById("directOrderForm").style.display="block";
-        document.getElementById("orderProduct").value=currentProduct;
-        document.getElementById("orderPrice").value=currentPrice;
-        document.getElementById("orderMethodModal").style.display="none";
-        window.scrollTo(0,document.getElementById("directOrderForm").offsetTop);
+    document.getElementById("webOrderBtn").onclick = function(){
+        document.getElementById("directOrderForm").style.display = "block";
+        document.getElementById("orderProduct").value = currentProduct;
+        document.getElementById("orderPrice").value = currentPrice;
+        document.getElementById("orderMethodModal").style.display = "none";
+        window.scrollTo(0, document.getElementById("directOrderForm").offsetTop);
     }
 }
 
@@ -285,7 +283,6 @@ function searchProduct(){
 
 function submitOrder(event){
     event.preventDefault();
-
     const orderData = {
         product: currentProduct,
         price: currentPrice,
@@ -293,17 +290,15 @@ function submitOrder(event){
         phone: document.getElementById("orderPhone").value,
         address: document.getElementById("orderAddress").value
     };
-
     emailjs.send("service_hdqqtci","template_8f0qzq4", orderData)
-    .then((response) => {
-        console.log("SUCCESS!", response.status, response.text);
-        document.getElementById("orderMsg").innerText="Order Submitted Successfully!";
+    .then(function(response){
+        document.getElementById("orderMsg").innerText = "Order Submitted Successfully!";
         document.getElementById("orderForm").reset();
-        document.getElementById("directOrderForm").style.display="none";
-    })
-    .catch((error) => {
-        console.error("FAILED...", error);
-        alert("Failed to send order. Check console for details.");
+        document.getElementById("directOrderForm").style.display = "none";
+        console.log("SUCCESS!", response.status, response.text);
+    }, function(error){
+        alert("Failed to send order. Check console.");
+        console.log("FAILED...", error);
     });
 }
 </script>
