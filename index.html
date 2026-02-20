@@ -279,18 +279,16 @@ currentPrice=price;
 document.getElementById("orderMethodModal").style.display="block";
 
 document.getElementById("whatsappBtn").onclick=function(){
-let message = `🛒 *ORDER FROM SNIX STORE* 🛒
+let message=`New Order - Snix Store\nProduct: ${currentProduct}\nPrice: ${currentPrice}\nName:\nAddress:\nPhone:`;
+let url="https://wa.me/919319942411?text="+encodeURIComponent(message);
+window.open(url,"_blank");
+}
 
-*Product:* ${currentProduct}
-*Price:* ${currentPrice}
+document.getElementById("instagramBtn").onclick=function(){
+let message=`Hello Snix Store,\nI want to order:\nProduct: ${currentProduct}\nPrice: ${currentPrice}`;
+let instagramURL="https://instagram.com/riseup003";
+window.open(instagramURL,"_blank");
 
-*Customer Details:*
-Name: 
-Address: 
-Phone: 
-
-🙏 THANK YOU FOR SHOPPING WITH US!
-Your order will be delivered soon.`;
 }
 let url = "https://wa.me/919319942415?text=" + encodeURIComponent(message);
 window.open(url, "_blank"); 
@@ -334,6 +332,7 @@ document.getElementById("directOrderForm").style.display="none";
 
 </body>
 </html>
+
 
 
 
