@@ -279,9 +279,18 @@ currentPrice=price;
 document.getElementById("orderMethodModal").style.display="block";
 
 document.getElementById("whatsappBtn").onclick=function(){
-let message=`ORDER ON - sNIX Store\nProduct: ${currentProduct}\nPrice: ${currentPrice}\nName:\nAddress:\nPhone:\THANKS FOR SHOPPING US YOUR ORDER DELIVER SOON:`;
-let url="https://wa.me/919319942415?text="+encodeURIComponent(message);
-window.open(url,"_blank");
+let message = `🛒 *ORDER FROM SNIX STORE* 🛒
+
+*Product:* ${currentProduct}
+*Price:* ${currentPrice}
+
+*Customer Details:*
+Name: 
+Address: 
+Phone: 
+
+🙏 THANK YOU FOR SHOPPING WITH US!
+Your order will be delivered soon.`;
 }
 
 document.getElementById("instagramBtn").onclick=function(){
@@ -323,6 +332,7 @@ document.getElementById("directOrderForm").style.display="none";
 
 </body>
 </html>
+
 
 
 
