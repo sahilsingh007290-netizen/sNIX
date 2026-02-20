@@ -273,41 +273,41 @@ closeProductDetail();
 chooseOrderMethod(currentProduct,currentPrice);
 }
 
-function chooseOrderMethod(product,price){
-currentProduct=product;
-currentPrice=price;
-document.getElementById("orderMethodModal").style.display="block";
+function chooseOrderMethod(product, price) {
+    currentProduct = product;
+    currentPrice = price;
 
-document.getElementById("whatsappBtn").onclick=function(){
-let message=`New Order - Snix Store\nProduct: ${currentProduct}\nPrice: ${currentPrice}\nName:\nAddress:\nPhone:`;
-let url="https://wa.me/919319942415?text="+encodeURIComponent(message);
-window.open(url,"_blank");
+    // Show modal
+    document.getElementById("orderMethodModal").style.display = "block";
+
+    // WhatsApp Button
+    document.getElementById("whatsappBtn").onclick = function() {
+        let message = `🛒 *Product:* ${currentProduct}\n*Price:* ${currentPrice}\n\n*Customer Details:*\nName: \nAddress: \nPhone: \n\n🙏 THANK YOU FOR SHOPPING WITH US!\nYour order will be delivered soon.`;
+        let url = "https://wa.me/919319942415?text=" + encodeURIComponent(message);
+        window.open(url, "_blank");
+    }
+
+    // Instagram Button
+    let instagramBtn = document.getElementById("instagramBtn");
+    if(instagramBtn) {  // check if exists
+        instagramBtn.onclick = function(){
+            let message = `Hello Snix Store,\nI want to order:\nProduct: ${currentProduct}\nPrice: ${currentPrice}`;
+            let instagramURL = "https://instagram.com/riseup003";
+            window.open(instagramURL,"_blank");
+            alert("Please send this message on Instagram:\n\n"+message);
+        }
+    }
+
+    // Website order form
+    document.getElementById("webOrderBtn").onclick = function() {
+        document.getElementById("directOrderForm").style.display = "block";
+        document.getElementById("orderProduct").value = currentProduct;
+        document.getElementById("orderPrice").value = currentPrice;
+        document.getElementById("orderMethodModal").style.display = "none";
+        window.scrollTo(0, document.getElementById("directOrderForm").offsetTop);
+    }
 }
 
-document.getElementById("instagramBtn").onclick=function(){
-let message=`Hello Snix Store,\nI want to order:\nProduct: ${currentProduct}\nPrice: ${currentPrice}`;
-let instagramURL="https://instagram.com/riseup003";
-window.open(instagramURL,"_blank");
-
-}
-let url = "https://wa.me/919319942415?text=" + encodeURIComponent(message);
-window.open(url, "_blank"); 
-  
-document.getElementById("instagramBtn").onclick=function(){
-let message=`Hello Snix Store,\nI want to order:\nProduct: ${currentProduct}\nPrice: ${currentPrice}`;
-let instagramURL="https://instagram.com/riseup003";
-window.open(instagramURL,"_blank");
-alert("Please send this message on Instagram:\n\n"+message);
-}
-
-document.getElementById("webOrderBtn").onclick=function(){
-document.getElementById("directOrderForm").style.display="block";
-document.getElementById("orderProduct").value=currentProduct;
-document.getElementById("orderPrice").value=currentPrice;
-document.getElementById("orderMethodModal").style.display="none";
-window.scrollTo(0,document.getElementById("directOrderForm").offsetTop);
-}
-}
 
 function closeOrderMethod(){
 document.getElementById("orderMethodModal").style.display="none";
@@ -332,6 +332,7 @@ document.getElementById("directOrderForm").style.display="none";
 
 </body>
 </html>
+
 
 
 
