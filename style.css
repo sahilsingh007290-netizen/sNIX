@@ -2,7 +2,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: black;
+    background: #f5f5f5;
 }
 
 /* ===== HEADER ===== */
@@ -203,3 +203,4 @@ img {
     height: auto;
     display: block;
 }
+
